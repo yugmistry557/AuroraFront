@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Globe from 'react-globe.gl';
 import './App.css';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 export default function App() {
   const globeEl = useRef();
   
@@ -333,7 +333,7 @@ export default function App() {
               if (!alertEmail) return;
               setAlertStatus("Saving to Command Center...");
               try {
-                const res = await fetch(`${API_BASE_URL}/api/telemetry`, {
+                const res = await fetch(`${API_BASE_URL}/api/subscribe`, {
                   method: 'POST', headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ 
                     email: alertEmail, 
